@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+    <constant name="struts.objectFactory" value="spring"></constant>
+
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor" class="loginInterceptor"></interceptor>
+			<interceptor name="userLogInterceptor" class="userLogInterceptor"></interceptor>
+			<interceptor-stack name="loginDefaultStack">
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="loginDefaultStack"></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/login</result>
+		</global-results>
+		<action name="login" class="loginAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref> 
+			<result name="input" type="freemarker">/WEB-INF/freemarker/login.ftl</result>
+			<result name="success" type="redirect">/index</result>
+		</action>
+		<action name="index" class="indexAction">
+			<result name="success" type="freemarker">/WEB-INF/freemarker/index.ftl</result>
+		</action>
+		<action name="product" class="productAction">
+			<interceptor-ref name="loginDefaultStack"></interceptor-ref>
+			<interceptor-ref name="userLogInterceptor"></interceptor-ref>
+			<result name="success" type="freemarker">/WEB-INF/freemarker/product.ftl</result>
+		</action>
+		<action name="logout" class="logoutAction"></action>
+	</package>
+</struts>

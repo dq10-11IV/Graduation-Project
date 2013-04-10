@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xsi:schemaLocation=" 
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+          http://www.springframework.org/schema/tx
+          http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+ default-autowire="byName">
+	<!-- datasource configuration -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://192.168.0.100:3306/seucloud"/>
+        <property name="username" value="snow"/>
+        <property name="password" value="12345"/>
+        
+        <!-- Connection Pooling DBCP -->  
+        <property name="initialSize" value="5" />  
+        <property name="maxActive" value="100" />  
+        <property name="maxIdle" value="30" />  
+        <property name="maxWait" value="1000" />  
+        <property name="poolPreparedStatements" value="true" />  
+        <property name="defaultAutoCommit" value="false" />  
+    </bean>
+    
+    <!-- mybatis sqlsession factory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <!-- mybatis mapper scanner configuration -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+    	<property name="sqlSessionFactory"  ref="sqlSessionFactory"/>  
+    	<property name="basePackage" value="cn.edu.seu.cloudlab.dao"/>  
+	</bean> 
+    
+    <!-- context scanner for service -->
+	<context:component-scan base-package="cn.edu.seu.cloudlab.service" />
+	
+	<!-- login interceptor -->
+	<bean id="loginInterceptor" class="cn.edu.seu.cloudlab.interceptor.LoginInterceptor">
+	</bean>
+	
+	<!-- user log interceptor -->
+	<bean id="userLogInterceptor" class="cn.edu.seu.cloudlab.interceptor.UserLogInterceptor">
+	</bean>
+	
+	<!-- biz action -->
+	<bean id="loginAction" class="cn.edu.seu.cloudlab.action.LoginAction" scope="prototype">
+	</bean>
+	<bean id="logoutAction" class="cn.edu.seu.cloudlab.action.LogoutAction" scope="prototype">
+	</bean>
+	<bean id="indexAction" class="cn.edu.seu.cloudlab.action.IndexAction" scope="prototype">
+	</bean>
+	<bean id="productAction" class="cn.edu.seu.cloudlab.action.ProductAction" scope="prototype">
+	</bean>
+</beans>
