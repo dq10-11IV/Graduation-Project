@@ -16,9 +16,9 @@
 	<!-- datasource configuration -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://192.168.0.100:3306/seucloud"/>
-        <property name="username" value="snow"/>
-        <property name="password" value="12345"/>
+        <property name="url" value="jdbc:mysql://192.168.1.8:3306/seucloud"/>
+        <property name="username" value="seulab"/>
+        <property name="password" value="seulab"/>
         
         <!-- Connection Pooling DBCP -->  
         <property name="initialSize" value="5" />  
