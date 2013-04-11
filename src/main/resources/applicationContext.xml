@@ -60,4 +60,6 @@
 	</bean>
 	<bean id="productAction" class="cn.edu.seu.cloudlab.action.ProductAction" scope="prototype">
 	</bean>
+	<bean id="searchAction" class="cn.edu.seu.cloudlab.action.SearchAction" scope="prototype">
+	</bean>
 </beans>

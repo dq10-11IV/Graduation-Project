@@ -33,5 +33,8 @@
 			<result name="success" type="freemarker">/WEB-INF/freemarker/product.ftl</result>
 		</action>
 		<action name="logout" class="logoutAction"></action>
+		<action name="search" class="searchAction">
+			<result name="success" type="freemarker">/WEB-INF/freemarker/search.ftl</result>
+		</action>
 	</package>
 </struts>

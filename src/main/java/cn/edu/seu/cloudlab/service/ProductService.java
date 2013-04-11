@@ -81,4 +81,27 @@ public class ProductService {
 			}
 		}
 	}
+	public List<ProductDto> getProductRecommendProductsByIndex1(int index1, int topN) {
+		List<ProductEntity> productEntityList = null;
+		try {
+			productEntityList = productDao.getProductRecommendsByIndex1(index1, topN);
+		} catch(Exception ex) {
+			logger.error("Exception in productDao.getProductRecommendsByIndex1: ", ex);
+			return null;
+		}
+		if(productEntityList == null) {
+			return null;
+		} else {
+			List<ProductDto> resultList = new ArrayList<ProductDto>();
+			for(ProductEntity entity : productEntityList) {
+				if (entity != null) {
+					ProductDto productDto = new ProductDto();
+					BeanUtils.copyProperties(entity, productDto);
+					resultList.add(productDto);
+				}
+			}
+			return resultList;
+ 		}
+		
+	}
 }
