@@ -8,18 +8,19 @@ package cn.edu.seu.cloudlab.util;
  *
  */
 public class IndexCount {
-	private int index1;
+	private String index1;
 	private int count;
+
 	/**
 	 * @return the index1
 	 */
-	public int getIndex1() {
+	public String getIndex1() {
 		return index1;
 	}
 	/**
 	 * @param index1 the index1 to set
 	 */
-	public void setIndex1(int index1) {
+	public void setIndex1(String index1) {
 		this.index1 = index1;
 	}
 	/**

@@ -16,8 +16,8 @@ public class ProductDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String productName;
-	private int productIndex1;
-	private int productIndex2;
+	private String productIndex1;
+	private String productIndex2;
 
 	/**
 	 * @return the id
@@ -46,26 +46,25 @@ public class ProductDto implements Serializable {
 	/**
 	 * @return the productIndex1
 	 */
-	public int getProductIndex1() {
+	public String getProductIndex1() {
 		return productIndex1;
 	}
 	/**
 	 * @param productIndex1 the productIndex1 to set
 	 */
-	public void setProductIndex1(int productIndex1) {
+	public void setProductIndex1(String productIndex1) {
 		this.productIndex1 = productIndex1;
 	}
 	/**
 	 * @return the productIndex2
 	 */
-	public int getProductIndex2() {
+	public String getProductIndex2() {
 		return productIndex2;
 	}
 	/**
 	 * @param productIndex2 the productIndex2 to set
 	 */
-	public void setProductIndex2(int productIndex2) {
+	public void setProductIndex2(String productIndex2) {
 		this.productIndex2 = productIndex2;
 	}
-	
 }

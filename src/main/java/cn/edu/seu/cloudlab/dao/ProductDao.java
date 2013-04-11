@@ -35,6 +35,6 @@ public interface ProductDao {
 			@Result(property="productIndex1", column="product_index1"),
 			@Result(property="productIndex2", column="product_index2")
 	})
-	public List<ProductEntity> getProductRecommendsByIndex1(@Param("index1") int index1, 
+	public List<ProductEntity> getProductRecommendsByIndex1(@Param("index1") String index1, 
 													        @Param("topN")   int topN);
 }

@@ -59,7 +59,7 @@ public class SearchAction extends BaseAction {
 			searchResult = searchService.getSearchResult(q);
 		}
 		if(searchResult != null && searchResult.size() > 0) {
-			Map<Integer, Integer> index1CountMap = new HashMap<Integer, Integer>();
+			Map<String, Integer> index1CountMap = new HashMap<String, Integer>();
 			for(ProductDto productDto : searchResult) {
 				if(!index1CountMap.containsKey(productDto.getProductIndex1())) {
 					index1CountMap.put(productDto.getProductIndex1(), 1);
@@ -67,11 +67,11 @@ public class SearchAction extends BaseAction {
 					index1CountMap.put(productDto.getProductIndex1(), index1CountMap.get(productDto.getProductIndex1()) + 1);
 				}
 			}
-			Set<Entry<Integer, Integer>> entries = index1CountMap.entrySet();
-			Iterator<Entry<Integer, Integer>> iterator = entries.iterator();
+			Set<Entry<String, Integer>> entries = index1CountMap.entrySet();
+			Iterator<Entry<String, Integer>> iterator = entries.iterator();
 			List<IndexCount> indexCountList = new ArrayList<IndexCount>();
 			while(iterator.hasNext()) {
-				Entry<Integer, Integer> entry = iterator.next();
+				Entry<String, Integer> entry = iterator.next();
 				if(entry.getValue() > 1) {
 					IndexCount indexCount = new IndexCount();
 					indexCount.setIndex1(entry.getKey());

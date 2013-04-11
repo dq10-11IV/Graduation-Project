@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title> ${currentProduct.productName} | Seu Cloud Lab</title>
+		<title>	<#if currentProduct??>${currentProduct.productName}<#else>Product Page</#if> | Seu Cloud Lab</title>
 		<link href="/assets/css/bootstrap.css" rel="stylesheet">
 		<style type="text/css">
      	body {
@@ -15,6 +15,7 @@
 	<body>
 		<#include "/WEB-INF/freemarker/head.ftl">
 		<div class="container">
+			<#if currentProduct??>
 			<div class="hero-unit">
 				<h1>${currentProduct.productName}</h1>
 				<p>
@@ -35,6 +36,7 @@
 					</tr>
 				</table>
 			</div>
+			</#if>
 			<#if productRecommends??>
 			<h3>These are results from Hadoop:</h3>
 				<div id="myCarousel1" class="carousel slide">

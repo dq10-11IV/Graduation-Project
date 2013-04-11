@@ -81,7 +81,7 @@ public class ProductService {
 			}
 		}
 	}
-	public List<ProductDto> getProductRecommendProductsByIndex1(int index1, int topN) {
+	public List<ProductDto> getProductRecommendProductsByIndex1(String index1, int topN) {
 		List<ProductEntity> productEntityList = null;
 		try {
 			productEntityList = productDao.getProductRecommendsByIndex1(index1, topN);
