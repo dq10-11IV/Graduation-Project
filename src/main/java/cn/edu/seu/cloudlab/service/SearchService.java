@@ -31,18 +31,12 @@ public class SearchService {
 	private ProductService productService;
 	
 	public List<ProductDto> getSearchResult(String keyword) {
-		String searchResultString = null;
 		try {
-			searchResultString = searchDao.getSearchResults(keyword);
-		} catch(Exception ex) {
-			logger.error("Exception in searchDao.getSearchResults: ", ex);
-			return null;
-		}
-		if(StringUtils.isEmpty(searchResultString)) {
-			return null;
-		} else {
-			List<ProductDto> resultList = new ArrayList<ProductDto>();
-			try {
+			String searchResultString = searchDao.getSearchResults(keyword);
+			if(StringUtils.isEmpty(searchResultString)) {
+				return null;
+			} else {
+				List<ProductDto> resultList = new ArrayList<ProductDto>();
 				String[] items = searchResultString.split("\\|");
 				for(String item : items) {
 					int productId = Integer.parseInt(item);
@@ -52,10 +46,10 @@ public class SearchService {
 					}
 				}
 				return resultList;
-			} catch (Exception ex) {
-				logger.error("Exception in processing search result: ", ex);
-				return null;
 			}
+		} catch(Exception ex) {
+			logger.error("Exception in SearchService.getSearchResult, ex: ", ex);
+			return null;
 		}
 	}
 }

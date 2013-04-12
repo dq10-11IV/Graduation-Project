@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.edu.seu.cloudlab.dto.ProductDto;
+import cn.edu.seu.cloudlab.dto.ProductRecommendDto;
 import cn.edu.seu.cloudlab.service.ProductService;
 import cn.edu.seu.cloudlab.service.SearchService;
 import cn.edu.seu.cloudlab.util.IndexCount;
@@ -46,7 +47,7 @@ public class SearchAction extends BaseAction {
 	
 	private List<ProductDto> searchResult;
 	
-	private List<ProductDto> productRecommendsFromSearch;
+	private List<ProductRecommendDto> productRecommendsFromSearch;
 	
 	private String q = null;
 
@@ -54,48 +55,49 @@ public class SearchAction extends BaseAction {
 	 * @see cn.edu.seu.cloudlab.action.BaseAction#doExcute()
 	 */
 	@Override
-	public String doExcute() {
-		if(StringUtils.isNotEmpty(q)) {
-			searchResult = searchService.getSearchResult(q);
-		}
-		if(searchResult != null && searchResult.size() > 0) {
-			Map<String, Integer> index1CountMap = new HashMap<String, Integer>();
-			for(ProductDto productDto : searchResult) {
-				if(!index1CountMap.containsKey(productDto.getProductIndex1())) {
-					index1CountMap.put(productDto.getProductIndex1(), 1);
-				} else {
-					index1CountMap.put(productDto.getProductIndex1(), index1CountMap.get(productDto.getProductIndex1()) + 1);
-				}
+	public String doExecute() {
+		try {
+			if(StringUtils.isNotEmpty(q)) {
+				searchResult = searchService.getSearchResult(q);
 			}
-			Set<Entry<String, Integer>> entries = index1CountMap.entrySet();
-			Iterator<Entry<String, Integer>> iterator = entries.iterator();
-			List<IndexCount> indexCountList = new ArrayList<IndexCount>();
-			while(iterator.hasNext()) {
-				Entry<String, Integer> entry = iterator.next();
-				if(entry.getValue() > 1) {
-					IndexCount indexCount = new IndexCount();
-					indexCount.setIndex1(entry.getKey());
-					indexCount.setCount(entry.getValue());
-					indexCountList.add(indexCount);
+			if(searchResult != null && searchResult.size() > 0) {
+				Map<String, Integer> index1CountMap = new HashMap<String, Integer>();
+				for(ProductDto productDto : searchResult) {
+					if(!index1CountMap.containsKey(productDto.getProductIndex1())) {
+						index1CountMap.put(productDto.getProductIndex1(), 1);
+					} else {
+						index1CountMap.put(productDto.getProductIndex1(), index1CountMap.get(productDto.getProductIndex1()) + 1);
+					}
 				}
-			}
-			Collections.sort(indexCountList, new IndexCountComparator());
-			for(IndexCount ic : indexCountList) {
-				try {
-					List<ProductDto> resultList = 
+				Set<Entry<String, Integer>> entries = index1CountMap.entrySet();
+				Iterator<Entry<String, Integer>> iterator = entries.iterator();
+				List<IndexCount> indexCountList = new ArrayList<IndexCount>();
+				while(iterator.hasNext()) {
+					Entry<String, Integer> entry = iterator.next();
+					if(entry.getValue() > 1) {
+						IndexCount indexCount = new IndexCount();
+						indexCount.setIndex1(entry.getKey());
+						indexCount.setCount(entry.getValue());
+						indexCountList.add(indexCount);
+					}
+				}
+				Collections.sort(indexCountList, new IndexCountComparator());
+				for(IndexCount ic : indexCountList) {
+					List<ProductRecommendDto> resultList = 
 							productService.getProductRecommendProductsByIndex1(ic.getIndex1(), TOP_N);
 					if(resultList != null && resultList.size() > 0) {
 						if(productRecommendsFromSearch == null) {
-							productRecommendsFromSearch = new ArrayList<ProductDto>();
+							productRecommendsFromSearch = new ArrayList<ProductRecommendDto>();
 						}
 						productRecommendsFromSearch.addAll(resultList);
 					}
-				} catch(Exception ex) {
-					logger.error("Exception in productService.getProductRecommendProductsByIndex1: ", ex);
 				}
 			}
+			return SUCCESS;
+		} catch(Exception ex) {
+			logger.error("Exception in SearchAction.doExecute,ex: ", ex);
+			return ERROR;
 		}
-		return SUCCESS;
 	}
 
 	/**
@@ -115,7 +117,7 @@ public class SearchAction extends BaseAction {
 	/**
 	 * @return the productRecommendsFromSearch
 	 */
-	public List<ProductDto> getProductRecommendsFromSearch() {
+	public List<ProductRecommendDto> getProductRecommendsFromSearch() {
 		return productRecommendsFromSearch;
 	}
 

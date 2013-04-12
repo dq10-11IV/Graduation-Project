@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import cn.edu.seu.cloudlab.interceptor.LoginInterceptor;
 
@@ -21,6 +23,8 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 public class LogoutAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 	
+	private Logger logger = LoggerFactory.getLogger(LogoutAction.class);
+	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
@@ -30,23 +34,28 @@ public class LogoutAction extends ActionSupport implements ServletRequestAware, 
 	 */
 	@Override
 	public String execute() throws Exception {
-		HttpSession session = request.getSession(false);  
-        if (session!=null) {
-            session.removeAttribute(LoginInterceptor.USER_SESSION_KEY);
-        }
-        Cookie[] cookies = request.getCookies();  
-        if (cookies!=null) {  
-            for (Cookie cookie : cookies) {  
-                if (LoginInterceptor.COOKIE_REMEMBERME_KEY.equals(cookie  
-                        .getName())) {  
-                    cookie.setValue("");  
-                    cookie.setMaxAge(0);  
-                    response.addCookie(cookie);  
-                    return LOGIN;  
-                }  
-            }  
-        }  
-        return LOGIN;  
+		try {
+			HttpSession session = request.getSession(false);  
+	        if (session!=null) {
+	            session.removeAttribute(LoginInterceptor.USER_SESSION_KEY);
+	        }
+	        Cookie[] cookies = request.getCookies();  
+	        if (cookies!=null) {  
+	            for (Cookie cookie : cookies) {  
+	                if (LoginInterceptor.COOKIE_REMEMBERME_KEY.equals(cookie  
+	                        .getName())) {  
+	                    cookie.setValue("");  
+	                    cookie.setMaxAge(0);  
+	                    response.addCookie(cookie);  
+	                    return LOGIN;  
+	                }  
+	            }  
+	        }  
+	        return LOGIN;
+		} catch(Exception ex) {
+			logger.error("Exception in LogoutAction.execute, ex: ", ex);
+			return ERROR;
+		}
 	}
 
 	/**

@@ -42,19 +42,15 @@ public class ProductAction extends BaseAction {
 	 * @see cn.edu.seu.cloudlab.action.BaseAction#doExcute()
 	 */
 	@Override
-	public String doExcute() {
+	public String doExecute() {
 		try {
 			currentProduct = productService.getProduct(productId);
-		} catch(Exception ex) {
-			logger.error("Exception in productService.getProduct: ", ex);
-		}
-		
-		try {
 			productRecommends = productService.getProductRecommendProducts(productId);
+			return SUCCESS;
 		} catch(Exception ex) {
-			logger.error("Exception in productService.getProductRecommendProducts: ", ex);
+			logger.error("Exception in ProductAction.doExecute,ex: ", ex);
+			return ERROR;
 		}
-		return SUCCESS;
 	}
 
 	/**

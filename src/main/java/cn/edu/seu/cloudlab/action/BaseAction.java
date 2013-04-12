@@ -31,7 +31,7 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
 	
 	protected UserDto user;
 	
-	public abstract String doExcute();
+	public abstract String doExecute();
 
 	/* (non-Javadoc)
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
@@ -39,14 +39,12 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
 	@Override
 	public String execute() throws Exception {
 		user = (UserDto) session.get(LoginInterceptor.USER_SESSION_KEY);
-		String result = null;
 		try {
-			result = doExcute();
+			return doExecute();
 		} catch (Exception ex) {
-			result = ERROR;
-			logger.error("Exception in BaseAction.excute: ", ex);
+			logger.error("Exception in BaseAction.execute, ex: ", ex);
+			return ERROR;
 		}
-		return result;
 	}
 
 	@Override

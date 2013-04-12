@@ -31,77 +31,72 @@ public class ProductService {
 	private ProductDao productDao;
 	
 	public ProductDto getProduct(int productId) {
-		ProductEntity productEntity = null;
 		try {
-			productEntity = productDao.getProduct(productId);
+			ProductEntity productEntity = productDao.getProduct(productId);
+			if(productEntity == null) {
+				return null;
+			} else {
+				ProductDto product = new ProductDto();
+				BeanUtils.copyProperties(productEntity, product);
+				return product;
+			}
 		} catch(Exception ex) {
-			logger.error("Exception in productDao.getProduct: ", ex);
+			logger.error("Exception in ProductService.getProduct, ex: ", ex);
 			return null;
-		}
-		if(productEntity == null) {
-			return null;
-		} else {
-			ProductDto product = new ProductDto();
-			BeanUtils.copyProperties(productEntity, product);
-			return product;
 		}
 	}
 	
-	public List<ProductRecommendDto> getProductRecommendProducts(int productId) {
-		String recommendString = null; 
+	public List<ProductRecommendDto> getProductRecommendProducts(int theProductId) {
 		try {
-			recommendString = productDao.getProductRecommends(productId);
-		} catch(Exception ex) {
-			logger.error("Exception in productDao.getProductRecommends: ", ex);
-			return null;
-		}
-		
-		if(StringUtils.isEmpty(recommendString)) {
-			return null;
-		} else {
-			List<ProductRecommendDto> resultList = new ArrayList<ProductRecommendDto>();
-			try {
+			String recommendString = productDao.getProductRecommends(theProductId);
+			if(StringUtils.isEmpty(recommendString)) {
+				return null;
+			} else {
+				List<ProductRecommendDto> resultList = new ArrayList<ProductRecommendDto>();
 				String[] recommendItems = recommendString.split("\\|");
 				for(String recommendItem : recommendItems) {
 					String[] items = recommendItem.split(",");
-					int _productId = Integer.parseInt(items[0]);
+					int productId = Integer.parseInt(items[0]);
 					int recommendValue = Integer.parseInt(items[1]);
-					ProductDto product = this.getProduct(_productId);
+					ProductDto product = this.getProduct(productId);
 					if(product != null) {
 						ProductRecommendDto productRecommend = new ProductRecommendDto();
 						productRecommend.setProduct(product);
+						productRecommend.setHasRecommendValue(true);
 						productRecommend.setRecommendValue(recommendValue);
 						resultList.add(productRecommend);
 					} 
 				}
 				return resultList;
-			} catch(Exception ex) {
-				logger.error("Exception in processing recommend result: ", ex);
-				return null;
 			}
-		}
-	}
-	public List<ProductDto> getProductRecommendProductsByIndex1(String index1, int topN) {
-		List<ProductEntity> productEntityList = null;
-		try {
-			productEntityList = productDao.getProductRecommendsByIndex1(index1, topN);
 		} catch(Exception ex) {
-			logger.error("Exception in productDao.getProductRecommendsByIndex1: ", ex);
+			logger.error("Exception in ProductService.getProductRecommendProducts, ex: " ,ex);
 			return null;
 		}
-		if(productEntityList == null) {
-			return null;
-		} else {
-			List<ProductDto> resultList = new ArrayList<ProductDto>();
-			for(ProductEntity entity : productEntityList) {
-				if (entity != null) {
-					ProductDto productDto = new ProductDto();
-					BeanUtils.copyProperties(entity, productDto);
-					resultList.add(productDto);
+	} 
+	public List<ProductRecommendDto> getProductRecommendProductsByIndex1(String index1, int topN) {
+		try {
+			List<ProductEntity> productEntityList = null;
+			productEntityList = productDao.getProductRecommendsByIndex1(index1, topN);
+			if(productEntityList == null) {
+				return null;
+			} else {
+				List<ProductRecommendDto> resultList = new ArrayList<ProductRecommendDto>();
+				for(ProductEntity entity : productEntityList) {
+					if (entity != null) {
+						ProductDto productDto = new ProductDto();
+						BeanUtils.copyProperties(entity, productDto);
+						ProductRecommendDto productRecommendDto = new ProductRecommendDto();
+						productRecommendDto.setProduct(productDto);
+						productRecommendDto.setHasRecommendValue(false);
+						resultList.add(productRecommendDto);
+					}
 				}
-			}
-			return resultList;
- 		}
-		
+				return resultList;
+	 		}
+		} catch(Exception ex) {
+			logger.error("Exception in ProductService.getProductRecommendProductsByIndex1, ex: ", ex);
+			return null;
+		}
 	}
 }

@@ -50,7 +50,7 @@ public class UserLogInterceptor extends AbstractInterceptor {
 				logService.addUserLog(user.getId(), productId);
 			}
 		} catch(Exception ex) {
-			logger.error("Exception in UserLog intercetor:", ex);
+			logger.error("Exception in UserLogInterceptor.intercept, ex: ", ex);
 		}
 		return invocation.invoke();
 	}
