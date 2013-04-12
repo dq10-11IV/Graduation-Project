@@ -45,36 +45,28 @@ public class UserService {
 	private LogService logService;
 	
 	public UserDto login(String username, String password) {
-		UserEntity userEntity = null;
 		try {
-			userEntity = userDao.getUserByUsernameAndPWD(username, password);
+			UserEntity userEntity = userDao.getUserByUsernameAndPWD(username, password);
+			if(userEntity == null) {
+				return null;
+			} else {
+				UserDto user = new UserDto();
+				BeanUtils.copyProperties(userEntity, user);
+				return user;
+			}
 		} catch(Exception ex) {
-			logger.error("Exception in userDao.getUserByUsernameAndPWD: ", ex);
+			logger.error("Exception in UserService.login, ex: ", ex);
 			return null;
-		}
-		if(userEntity == null) {
-			return null;
-		} else {
-			UserDto user = new UserDto();
-			BeanUtils.copyProperties(userEntity, user);
-			return user;
 		}
 	}
 	
 	public List<ProductRecommendDto> getUserRecommendProducts(int userId) {
-		String recommendString = null; 
 		try {
-			recommendString = userDao.getUserRecommends(userId);
-		} catch(Exception ex) {
-			logger.error("Exception in userDao.getUserRecommends: ", ex);
-			return null;
-		}
-		
-		if(StringUtils.isEmpty(recommendString)) {
-			return null;
-		} else {
-			List<ProductRecommendDto> resultList = new ArrayList<ProductRecommendDto>();
-			try {
+			String recommendString = userDao.getUserRecommends(userId);
+			if(StringUtils.isEmpty(recommendString)) {
+				return null;
+			} else {
+				List<ProductRecommendDto> resultList = new ArrayList<ProductRecommendDto>();
 				String[] recommendItems = recommendString.split("\\|");
 				for(String recommendItem : recommendItems) {
 					String[] items = recommendItem.split(",");
@@ -84,73 +76,76 @@ public class UserService {
 					if(product != null) {
 						ProductRecommendDto productRecommend = new ProductRecommendDto();
 						productRecommend.setProduct(product);
+						productRecommend.setHasRecommendValue(true);
 						productRecommend.setRecommendValue(recommendValue);
 						resultList.add(productRecommend);
 					} 
 				}
 				return resultList;
-			} catch(Exception ex) {
-				logger.error("Exception in processing recommend result: ", ex);
-				return null;
-			}
-		} 
+			} 
+		} catch(Exception ex) {
+			logger.error("Exception in UserService.getUserRecommendProduct, ex: ", ex);
+			return null;
+		}
 		
 	}
 	
-	public List<Integer> getSimilarUserIds(int userId) {
-		String similarUserStr = null;
+	public List<Integer> getSimilarUserIds(int theUserId) {
 		try {
-			similarUserStr = userDao.getSimilarUsers(userId);
-		} catch(Exception ex) {
-			logger.error("Exception in userDao.getSimilarUsers: ", ex);
-			return null;
-		}
-		if(StringUtils.isEmpty(similarUserStr)) {
-			return null;
-		} else {
-			List<Integer> similarUserIds = new ArrayList<Integer>();
-			try {
+			String similarUserStr = userDao.getSimilarUsers(theUserId);
+			if(StringUtils.isEmpty(similarUserStr)) {
+				return null;
+			} else {
+				List<Integer> resultList = new ArrayList<Integer>();
 				String[] similarUsers = similarUserStr.split("\\|");
 				for(String similarUser : similarUsers) {
-					int _userId = Integer.parseInt(similarUser);
-					similarUserIds.add(_userId);
+					int userId = Integer.parseInt(similarUser);
+					resultList.add(userId);
 				}
-				return similarUserIds;
-			} catch(Exception ex) {
-				logger.error("Exception in processing similar use result: ", ex);
-				return null;
+				return resultList;
 			}
+		} catch(Exception ex) {
+			logger.error("Exception in UserService.getSimilarUserIds, ex: ", ex);
+			return null;
 		}
 	}
 	
-	public List<ProductDto> getUserRecommendProductsFromLogs(int userId) {
-		Map<Integer,ProductCount> productCounttMap = new HashMap<Integer, ProductCount>();
-		List<Integer> similarUsers = this.getSimilarUserIds(userId);
-		for(Integer _userId : similarUsers) {
-			List<Integer> productIds = logService.getRecentlyProductIds(_userId);
-			for(Integer productId : productIds) {
-				if(!productCounttMap.containsKey(productId)) {
-					ProductCount pc = new ProductCount();
-					pc.setProductId(productId);
-					pc.setCount(1);
-					productCounttMap.put(productId, pc);
-				} else {
-					ProductCount pc = productCounttMap.get(productId);
-					pc.setCount(pc.getCount() + 1);
+	public List<ProductRecommendDto> getUserRecommendProductsFromLogs(int theUserId) {
+		try {
+			Map<Integer,ProductCount> productCountMap = new HashMap<Integer, ProductCount>();
+			List<Integer> similarUsers = this.getSimilarUserIds(theUserId);
+			for(Integer userId : similarUsers) {
+				List<Integer> productIds = logService.getRecentlyProductIds(userId);
+				for(Integer productId : productIds) {
+					if(!productCountMap.containsKey(productId)) {
+						ProductCount pc = new ProductCount();
+						pc.setProductId(productId);
+						pc.setCount(1);
+						productCountMap.put(productId, pc);
+					} else {
+						ProductCount pc = productCountMap.get(productId);
+						pc.setCount(pc.getCount() + 1);
+					}
 				}
 			}
-		}
-		List<ProductCount> productCountList = new ArrayList<ProductCount>(productCounttMap.values());
-		Collections.sort(productCountList, new ProductCountComparator());
-		List<ProductDto> resultList = new ArrayList<ProductDto>();
-		for(int i = 0; i < productCountList.size() && i < 20; i ++) {
-			ProductCount pc = productCountList.get(i);
-			int _productId = pc.getProductId();
-			ProductDto product = productService.getProduct(_productId);
-			if(product != null) {
-				resultList.add(product);
+			List<ProductCount> productCountList = new ArrayList<ProductCount>(productCountMap.values());
+			Collections.sort(productCountList, new ProductCountComparator());
+			List<ProductRecommendDto> resultList = new ArrayList<ProductRecommendDto>();
+			for(int i = 0; i < productCountList.size() && i < 20; i ++) {
+				ProductCount pc = productCountList.get(i);
+				int productId = pc.getProductId();
+				ProductDto product = productService.getProduct(productId);
+				if(product != null) {
+					ProductRecommendDto productRecommendDto = new ProductRecommendDto();
+					productRecommendDto.setProduct(product);
+					productRecommendDto.setHasRecommendValue(false);
+					resultList.add(productRecommendDto);
+				}
 			}
+			return resultList.size() > 0 ? resultList : null;
+		}catch(Exception ex) {
+			logger.error("Exception in UserService.getUserRecommendProductsFromLogs, ex: ", ex);
+			return null;
 		}
-		return resultList.size() > 0 ? resultList : null;
 	}
 }

@@ -27,17 +27,17 @@ public class LogService {
 		try {
 			userLogDao.insertUserLog(userId, productId);
 		} catch(Exception ex) {
-			logger.error("Exception in userLogDao.insertUserLog ex: ", ex);
+			logger.error("Exception in LogService.addUserLog, ex: ", ex);
 		}
 	}
 	
 	public List<Integer> getRecentlyProductIds(int userId) {
-		List<Integer> resultList = null;
 		try {
-			resultList = userLogDao.getRecentProductIds(userId);
+			List<Integer> resultList = userLogDao.getRecentProductIds(userId);
+			return resultList;
 		} catch(Exception ex) {
-			logger.error("Exception in userLogDao.getRecentProductIds ex: ", ex);
+			logger.error("Exception in LogService.getRecentlyProductIds, ex: ", ex);
+			return null;
 		}
-		return resultList;
 	}
 }

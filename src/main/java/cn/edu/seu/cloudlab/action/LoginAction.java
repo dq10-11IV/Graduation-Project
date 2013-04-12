@@ -56,32 +56,32 @@ public class LoginAction extends ActionSupport implements ServletResponseAware, 
 	
 	@Override
 	public String execute() throws Exception {
-		if(action.equals("login")) {
-			if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
-				message = "Please enter your username and password.";
-				return INPUT;
-			}
-			UserDto user = null;
-			try {
-				user = userService.login(username, password);
-			} catch(Exception ex) {
-				logger.error("Exception in userService.login: ", ex);
-			}
-			if (user == null) {
-				message = "Something wrong with your username or password, please check again!";
-				return INPUT;
-			} else {
-				if(rememberMe) {
-					 Cookie cookie = new Cookie(LoginInterceptor.COOKIE_REMEMBERME_KEY, username + "==" + password);
-		             cookie.setMaxAge(60 * 60 * 24 * 14);  
-		             response.addCookie(cookie);
+		try {
+			if(action.equals("login")) {
+				if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
+					message = "Please enter your username and password.";
+					return INPUT;
 				}
-				session.put(LoginInterceptor.USER_SESSION_KEY, user);
-				return SUCCESS;
+				UserDto user = userService.login(username, password);
+				if (user == null) {
+					message = "Something wrong with your username or password, please check again!";
+					return INPUT;
+				} else {
+					if(rememberMe) {
+						 Cookie cookie = new Cookie(LoginInterceptor.COOKIE_REMEMBERME_KEY, username + "==" + password);
+			             cookie.setMaxAge(60 * 60 * 24 * 14);  
+			             response.addCookie(cookie);
+					}
+					session.put(LoginInterceptor.USER_SESSION_KEY, user);
+					return SUCCESS;
+				}
+				
+			} else {
+				return INPUT;
 			}
-			
-		} else {
-			return INPUT;
+		} catch(Exception ex) {
+			logger.error("Exception in LoginAction.execute, ex: ", ex);
+			return ERROR;
 		}
 	}
 
