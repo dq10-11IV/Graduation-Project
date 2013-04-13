@@ -15,9 +15,9 @@ import org.apache.ibatis.annotations.Select;
  */
 public interface UserLogDao {
 	@Insert("INSERT INTO user_logs(user_id, product_id, add_time) VALUES (#{userId}, #{productId}, NOW())")
-	public void insertUserLog(@Param("userId") int userId, 
-			                  @Param("productId") int productId);
+	public void insertUserLog(@Param("userId") String userId, 
+			                  @Param("productId") String productId);
 	
 	@Select("SELECT product_id FROM user_logs WHERE user_id = #{userId} ORDER BY add_time DESC LIMIT 20")
-	public List<String> getRecentProductIds(@Param("userId") int userId);
+	public List<String> getRecentProductIds(@Param("userId") String userId);
 }

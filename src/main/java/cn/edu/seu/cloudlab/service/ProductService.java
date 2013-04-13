@@ -49,6 +49,36 @@ public class ProductService {
 		}
 	}
 	
+	public List<ProductDto> batchGetProducts(List<String> productIdList) {
+		try {
+			StringBuilder stringBuilder = new StringBuilder();
+			for(String productId : productIdList) {
+				stringBuilder.append(productId);
+				stringBuilder.append(",");
+			}
+			if(stringBuilder.charAt(stringBuilder.length() - 1) == ',') {
+				stringBuilder.setLength(stringBuilder.length() - 1);
+			}
+			String productIds = stringBuilder.toString();
+			List<ProductEntity> entities = productDao.batchGetProduct(productIds);
+			if (entities == null || entities.size() == 0) {
+				return null;
+			}
+			List<ProductDto> resultList = new ArrayList<ProductDto>();
+			for (ProductEntity entity : entities) {
+				if (entity != null) {
+					ProductDto productDto = new ProductDto();
+					BeanUtils.copyProperties(entity, productDto);
+					resultList.add(productDto);
+				}
+			}
+			return resultList;
+		} catch(Exception ex) {
+			logger.error("Exception in ProductService.batchGetProducts, ex: ", ex);
+			return null;
+		}
+	}
+	
 	public List<ProductRecommendDto> getProductRecommendProducts(String theProductId) {
 		try {
 			String recommendString = productDao.getProductRecommends(theProductId);
@@ -71,6 +101,9 @@ public class ProductService {
 					productIdListBuilder.setLength(productIdListBuilder.length() - 1);
 				}
 				List<ProductEntity> productList = productDao.batchGetProduct(productIdListBuilder.toString());
+				if (productList == null || productList.size() == 0) {
+					return null;
+				}
 				for(ProductEntity entity : productList) {
 					if(entity != null) {
 						ProductDto product = new ProductDto();
@@ -78,12 +111,12 @@ public class ProductService {
 						String recommendValue = recommendValueMap.get(product.getId());
 						ProductRecommendDto productRecommendDto = new ProductRecommendDto();
 						productRecommendDto.setProduct(product);
-						productRecommendDto.setHasRecommendValue(true);
 						productRecommendDto.setRecommendValue(new BigDecimal(recommendValue));
+						productRecommendDto.setHasRecommendValue(true);
 						resultList.add(productRecommendDto);
 					}
 				}
-				return resultList.size() > 0 ? resultList : null;
+				return resultList;
 			}
 		} catch(Exception ex) {
 			logger.error("Exception in ProductService.getProductRecommendProducts, ex: " ,ex);
@@ -92,8 +125,7 @@ public class ProductService {
 	} 
 	public List<ProductRecommendDto> getProductRecommendProductsByIndex1(String index1, int topN) {
 		try {
-			List<ProductEntity> productEntityList = null;
-			productEntityList = productDao.getProductRecommendsByIndex1(index1, topN);
+			List<ProductEntity> productEntityList = productDao.getProductRecommendsByIndex1(index1, topN);
 			if(productEntityList == null) {
 				return null;
 			} else {

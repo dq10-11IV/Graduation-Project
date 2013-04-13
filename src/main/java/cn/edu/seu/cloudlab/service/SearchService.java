@@ -3,7 +3,7 @@
  */
 package cn.edu.seu.cloudlab.service;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -35,18 +35,9 @@ public class SearchService {
 			String searchResultString = searchDao.getSearchResults(keyword);
 			if(StringUtils.isEmpty(searchResultString)) {
 				return null;
-			} else {
-				List<ProductDto> resultList = new ArrayList<ProductDto>();
-				String[] items = searchResultString.split("\\|");
-				for(String item : items) {
-					String productId = item;
-					ProductDto product = productService.getProduct(productId);
-					if(product != null) {
-						resultList.add(product);
-					}
-				}
-				return resultList;
-			}
+			} 
+			String[] items = searchResultString.split("\\|");
+			return productService.batchGetProducts(Arrays.asList(items));
 		} catch(Exception ex) {
 			logger.error("Exception in SearchService.getSearchResult, ex: ", ex);
 			return null;

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.StrutsStatics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,10 +45,10 @@ public class UserLogInterceptor extends AbstractInterceptor {
 			HttpServletRequest request = (HttpServletRequest) invocation.getInvocationContext().get(StrutsStatics.HTTP_REQUEST);
 			Map<String, Object> session = invocation.getInvocationContext().getSession();
 			UserDto user = (UserDto) session.get(LoginInterceptor.USER_SESSION_KEY);
-			String productIdStr = request.getParameter("productId");
-			int productId = Integer.parseInt(productIdStr);
-			if(user!= null && user.getId() > 0 && productId > 0) {
-				logService.addUserLog(user.getId(), productId);
+			String productId = request.getParameter("productId");
+			String userId = user.getId();
+			if(user!= null && StringUtils.isNotEmpty(userId) && StringUtils.isNotEmpty(productId)) {
+				logService.addUserLog(userId, productId);
 			}
 		} catch(Exception ex) {
 			logger.error("Exception in UserLogInterceptor.intercept, ex: ", ex);

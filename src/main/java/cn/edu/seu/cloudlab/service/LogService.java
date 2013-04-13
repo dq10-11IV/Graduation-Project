@@ -23,7 +23,7 @@ public class LogService {
 	@Autowired
 	private UserLogDao userLogDao;
 	
-	public void addUserLog(int userId, int productId) {
+	public void addUserLog(String userId, String productId) {
 		try {
 			userLogDao.insertUserLog(userId, productId);
 		} catch(Exception ex) {
@@ -31,7 +31,7 @@ public class LogService {
 		}
 	}
 	
-	public List<String> getRecentlyProductIds(int userId) {
+	public List<String> getRecentlyProductIds(String userId) {
 		try {
 			List<String> resultList = userLogDao.getRecentProductIds(userId);
 			return resultList;
