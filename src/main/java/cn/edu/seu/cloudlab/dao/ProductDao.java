@@ -24,10 +24,10 @@ public interface ProductDao {
 			@Result(property="productIndex1", column="product_index1"),
 			@Result(property="productIndex2", column="product_index2")
 	})
-	public ProductEntity getProduct(@Param("productId") int productId);
+	public ProductEntity getProduct(@Param("productId") String productId);
 	
 	@Select("SELECT recommends FROM product_recommends WHERE product_id = #{productId} LIMIT 1")
-	public String getProductRecommends (@Param("productId") int productId); 
+	public String getProductRecommends (@Param("productId") String productId); 
 	
 	@Select("SELECT p.id, p.product_name, p.product_index1, p.product_index2 FROM products p JOIN product_hots h ON p.id = product_id WHERE p.product_index1 = #{index1} ORDER BY h.hot_degree DESC LIMIT #{topN}")
 	@Results(value={
@@ -37,4 +37,12 @@ public interface ProductDao {
 	})
 	public List<ProductEntity> getProductRecommendsByIndex1(@Param("index1") String index1, 
 													        @Param("topN")   int topN);
+	
+	@Select("SELECT id, product_name, product_index1, product_index2 FROM products WHERE FIND_IN_SET(id, #{productIds})")
+	@Results(value={
+			@Result(property="productName", column="product_name"),
+			@Result(property="productIndex1", column="product_index1"),
+			@Result(property="productIndex2", column="product_index2")
+	})
+	public List<ProductEntity> batchGetProduct(@Param("productIds") String productIds);
 }

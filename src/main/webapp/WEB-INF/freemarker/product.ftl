@@ -1,3 +1,4 @@
+<#import "/WEB-INF/freemarker/common/carousel.ftl" as common>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,47 +40,7 @@
 			</#if>
 			<#if productRecommends??>
 			<h3>These are results from Hadoop:</h3>
-				<div id="myCarousel1" class="carousel slide">
-					<div class="carousel-inner">
-		    			<#list productRecommends as item>
-		    			<#if item_index = 0>
-		    			<div class="active item">
-		    				<div class="row-fluid">
-								<ul class="thumbnails">
-						</#if>
-									<li class="span2">
-				                		<div class="thumbnail">
-				                 			<img data-src="holder.js/160x120" alt="">
-				                 			<div class="caption">
-				                   		 		<h5>
-				                   		 			<a href="/product?productId=${item.product.id}">${item.product.productName}</a>
-				                   		 			<span class="badge badge-info pull-right">${item.recommendValue}</span>
-				                   		 		</h5>
-				                   		 		<p>This is the product recommended for you with product id: ${item.product.id}</p>
-				                   		 		<p>
-				                   		 			<a class="btn btn-mini" href="/product?productId=${item.product.id}">View details</a>
-				                   		 		</p>
-				                 		 	</div>
-				                		</div>
-			              			</li>
-		    			<#if (item_index + 1) %6 = 0 &&  item_index != productRecommends?size - 1>
-		    					</ul>
-		    				</div>
-		    			</div>
-		    			<div class="item">
-		    				<div class="row-fluid">
-								<ul class="thumbnails">
-		    			</#if>
-		    			<#if item_index = productRecommends?size - 1>
-		    					</ul>
-		    				</div>
-		    			</div>
-		    			</#if>
-		    			</#list>
-		 			</div>
-		 			<a class="carousel-control left" href="#myCarousel1" data-slide="prev">&lsaquo;</a>
-		 			<a class="carousel-control right" href="#myCarousel1" data-slide="next">&rsaquo;</a>
-				</div>
+			<@common.carousel productRecommends = productRecommends/>
 			</#if>
 		</div>
 		<#include "/WEB-INF/freemarker/footer.ftl"/>

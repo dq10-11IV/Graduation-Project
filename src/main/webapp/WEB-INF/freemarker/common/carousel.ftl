@@ -12,12 +12,18 @@
                  			<img data-src="holder.js/160x120" alt="">
                  			<div class="caption">
                    		 		<h5>
-                   		 			<a href="/product?productId=${item.product.id}">${item.product.productName}</a>
+                   		 			<a href="/product?productId=${item.product.id}">${item.product.id}</a>
                    		 			<#if item.hasRecommendValue>
-                   		 			<span class="badge badge-info pull-right">${item.recommendValue}</span>
+                   		 			<span class="badge badge-info pull-right">${item.recommendValue?string("0.#")}</span>
                    		 			</#if>
                    		 		</h5>
-                   		 		<p>This is the product recommended for you with product id: ${item.product.id}</p>
+                   		 		<p>
+                   		 			<#if item.product.productName?length lt 50>
+                   		 			${item.product.productName}
+                   		 			<#else>
+                   		 			${item.product.productName[0..48]}..
+                   		 			</#if>
+                   		 		</p>
                    		 		<p>
                    		 			<a class="btn btn-mini" href="/product?productId=${item.product.id}">View details</a>
                    		 		</p>

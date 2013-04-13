@@ -31,9 +31,9 @@ public class LogService {
 		}
 	}
 	
-	public List<Integer> getRecentlyProductIds(int userId) {
+	public List<String> getRecentlyProductIds(int userId) {
 		try {
-			List<Integer> resultList = userLogDao.getRecentProductIds(userId);
+			List<String> resultList = userLogDao.getRecentProductIds(userId);
 			return resultList;
 		} catch(Exception ex) {
 			logger.error("Exception in LogService.getRecentlyProductIds, ex: ", ex);

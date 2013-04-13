@@ -8,19 +8,19 @@ package cn.edu.seu.cloudlab.util;
  *
  */
 public class ProductCount {
-	private int productId;
+	private String productId;
 	private int count;
 	
 	/**
 	 * @return the productId
 	 */
-	public int getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 	/**
 	 * @param productId the productId to set
 	 */
-	public void setProductId(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	/**

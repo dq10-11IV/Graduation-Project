@@ -4,6 +4,7 @@
 package cn.edu.seu.cloudlab.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 
 /**
@@ -19,7 +20,7 @@ public class ProductRecommendDto implements Serializable {
 	
 	private ProductDto product;
 	private boolean hasRecommendValue;
-	private int recommendValue;
+	private BigDecimal recommendValue;
 	
 	/**
 	 * @return the product
@@ -49,15 +50,13 @@ public class ProductRecommendDto implements Serializable {
 	/**
 	 * @return the recommendValue
 	 */
-	public int getRecommendValue() {
+	public BigDecimal getRecommendValue() {
 		return recommendValue;
 	}
 	/**
 	 * @param recommendValue the recommendValue to set
 	 */
-	public void setRecommendValue(int recommendValue) {
+	public void setRecommendValue(BigDecimal recommendValue) {
 		this.recommendValue = recommendValue;
 	}
-	
-
 }

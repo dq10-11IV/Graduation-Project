@@ -19,5 +19,5 @@ public interface UserLogDao {
 			                  @Param("productId") int productId);
 	
 	@Select("SELECT product_id FROM user_logs WHERE user_id = #{userId} ORDER BY add_time DESC LIMIT 20")
-	public List<Integer> getRecentProductIds(@Param("userId") int userId);
+	public List<String> getRecentProductIds(@Param("userId") int userId);
 }

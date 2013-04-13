@@ -33,7 +33,7 @@ public class ProductAction extends BaseAction {
 	@Autowired
 	private LogService logService;
 	
-	private int productId;
+	private String productId;
 	
 	private ProductDto currentProduct;
 	private List<ProductRecommendDto> productRecommends;
@@ -56,7 +56,7 @@ public class ProductAction extends BaseAction {
 	/**
 	 * @param productId the productId to set
 	 */
-	public void setProductId(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 

@@ -3,6 +3,7 @@
  */
 package cn.edu.seu.cloudlab.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -70,14 +71,14 @@ public class UserService {
 				String[] recommendItems = recommendString.split("\\|");
 				for(String recommendItem : recommendItems) {
 					String[] items = recommendItem.split(",");
-					int productId = Integer.parseInt(items[0]);
-					int recommendValue = Integer.parseInt(items[1]);
+					String productId = items[0];
+					String recommendValue = items[1];
 					ProductDto product = productService.getProduct(productId);
 					if(product != null) {
 						ProductRecommendDto productRecommend = new ProductRecommendDto();
 						productRecommend.setProduct(product);
 						productRecommend.setHasRecommendValue(true);
-						productRecommend.setRecommendValue(recommendValue);
+						productRecommend.setRecommendValue(new BigDecimal(recommendValue));
 						resultList.add(productRecommend);
 					} 
 				}
@@ -112,11 +113,11 @@ public class UserService {
 	
 	public List<ProductRecommendDto> getUserRecommendProductsFromLogs(int theUserId) {
 		try {
-			Map<Integer,ProductCount> productCountMap = new HashMap<Integer, ProductCount>();
+			Map<String,ProductCount> productCountMap = new HashMap<String, ProductCount>();
 			List<Integer> similarUsers = this.getSimilarUserIds(theUserId);
 			for(Integer userId : similarUsers) {
-				List<Integer> productIds = logService.getRecentlyProductIds(userId);
-				for(Integer productId : productIds) {
+				List<String> productIds = logService.getRecentlyProductIds(userId);
+				for(String productId : productIds) {
 					if(!productCountMap.containsKey(productId)) {
 						ProductCount pc = new ProductCount();
 						pc.setProductId(productId);
@@ -133,7 +134,7 @@ public class UserService {
 			List<ProductRecommendDto> resultList = new ArrayList<ProductRecommendDto>();
 			for(int i = 0; i < productCountList.size() && i < 20; i ++) {
 				ProductCount pc = productCountList.get(i);
-				int productId = pc.getProductId();
+				String productId = pc.getProductId();
 				ProductDto product = productService.getProduct(productId);
 				if(product != null) {
 					ProductRecommendDto productRecommendDto = new ProductRecommendDto();

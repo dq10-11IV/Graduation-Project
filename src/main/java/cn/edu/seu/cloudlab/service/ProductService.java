@@ -3,8 +3,11 @@
  */
 package cn.edu.seu.cloudlab.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -30,7 +33,7 @@ public class ProductService {
 	@Autowired
 	private ProductDao productDao;
 	
-	public ProductDto getProduct(int productId) {
+	public ProductDto getProduct(String productId) {
 		try {
 			ProductEntity productEntity = productDao.getProduct(productId);
 			if(productEntity == null) {
@@ -46,7 +49,7 @@ public class ProductService {
 		}
 	}
 	
-	public List<ProductRecommendDto> getProductRecommendProducts(int theProductId) {
+	public List<ProductRecommendDto> getProductRecommendProducts(String theProductId) {
 		try {
 			String recommendString = productDao.getProductRecommends(theProductId);
 			if(StringUtils.isEmpty(recommendString)) {
@@ -54,20 +57,33 @@ public class ProductService {
 			} else {
 				List<ProductRecommendDto> resultList = new ArrayList<ProductRecommendDto>();
 				String[] recommendItems = recommendString.split("\\|");
+				StringBuilder productIdListBuilder = new StringBuilder();
+				Map<String, String> recommendValueMap = new HashMap<String, String>(); 
 				for(String recommendItem : recommendItems) {
 					String[] items = recommendItem.split(",");
-					int productId = Integer.parseInt(items[0]);
-					int recommendValue = Integer.parseInt(items[1]);
-					ProductDto product = this.getProduct(productId);
-					if(product != null) {
-						ProductRecommendDto productRecommend = new ProductRecommendDto();
-						productRecommend.setProduct(product);
-						productRecommend.setHasRecommendValue(true);
-						productRecommend.setRecommendValue(recommendValue);
-						resultList.add(productRecommend);
-					} 
+					String productId = items[0];
+					String recommendValue = items[1];
+					productIdListBuilder.append(productId);
+					productIdListBuilder.append(",");
+					recommendValueMap.put(productId, recommendValue);
 				}
-				return resultList;
+				if(productIdListBuilder.charAt(productIdListBuilder.length() - 1) == ',') {
+					productIdListBuilder.setLength(productIdListBuilder.length() - 1);
+				}
+				List<ProductEntity> productList = productDao.batchGetProduct(productIdListBuilder.toString());
+				for(ProductEntity entity : productList) {
+					if(entity != null) {
+						ProductDto product = new ProductDto();
+						BeanUtils.copyProperties(entity, product);
+						String recommendValue = recommendValueMap.get(product.getId());
+						ProductRecommendDto productRecommendDto = new ProductRecommendDto();
+						productRecommendDto.setProduct(product);
+						productRecommendDto.setHasRecommendValue(true);
+						productRecommendDto.setRecommendValue(new BigDecimal(recommendValue));
+						resultList.add(productRecommendDto);
+					}
+				}
+				return resultList.size() > 0 ? resultList : null;
 			}
 		} catch(Exception ex) {
 			logger.error("Exception in ProductService.getProductRecommendProducts, ex: " ,ex);

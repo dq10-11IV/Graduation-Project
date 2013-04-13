@@ -39,7 +39,7 @@ public class SearchService {
 				List<ProductDto> resultList = new ArrayList<ProductDto>();
 				String[] items = searchResultString.split("\\|");
 				for(String item : items) {
-					int productId = Integer.parseInt(item);
+					String productId = item;
 					ProductDto product = productService.getProduct(productId);
 					if(product != null) {
 						resultList.add(product);
