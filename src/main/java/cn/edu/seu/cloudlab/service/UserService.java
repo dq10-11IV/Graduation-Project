@@ -17,14 +17,13 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import cn.edu.seu.cloudlab.dao.UserDao;
 import cn.edu.seu.cloudlab.dto.ProductDto;
 import cn.edu.seu.cloudlab.dto.ProductRecommendDto;
 import cn.edu.seu.cloudlab.dto.UserDto;
 import cn.edu.seu.cloudlab.entity.UserEntity;
 import cn.edu.seu.cloudlab.util.ProductCount;
-import cn.edu.seu.cloudlab.util.ProductCountComparator;
+import cn.edu.seu.cloudlab.util.ProductRecommendComparator;
 
 /**
  * @author iHome
@@ -87,8 +86,10 @@ public class UserService {
 				String recommendValue = recommendValueMap.get(productDto.getId());
 				productRecommendDto.setRecommendValue(new BigDecimal(recommendValue));
 				productRecommendDto.setHasRecommendValue(true);
+//				productRecommendDto.setShouldShowRecommendValue(true);
 				resultList.add(productRecommendDto);
 			}
+			Collections.sort(resultList, new ProductRecommendComparator());
 			return resultList;
 		} catch(Exception ex) {
 			logger.error("Exception in UserService.getUserRecommendProduct, ex: ", ex);
@@ -116,7 +117,7 @@ public class UserService {
 	
 	public List<ProductRecommendDto> getUserRecommendProductsFromLogs(String theUserId) {
 		try {
-			Map<String,ProductCount> productCountMap = new HashMap<String, ProductCount>();
+			Map<String,Integer> productCountMap = new HashMap<String, Integer>();
 			List<String> similarUsers = this.getSimilarUserIds(theUserId);
 			if(similarUsers == null) {
 				return null;
@@ -128,26 +129,16 @@ public class UserService {
 				}
 				for(String productId : productIds) {
 					if(!productCountMap.containsKey(productId)) {
-						ProductCount pc = new ProductCount();
-						pc.setProductId(productId);
-						pc.setCount(1);
-						productCountMap.put(productId, pc);
+						productCountMap.put(productId, 1);
 					} else {
-						ProductCount pc = productCountMap.get(productId);
-						pc.setCount(pc.getCount() + 1);
+						productCountMap.put(productId, productCountMap.get(productId) + 1);
 					}
 				}
 			}
 			if(productCountMap.isEmpty()) {
 				return null;
 			}
-			List<ProductCount> productCountList = new ArrayList<ProductCount>(productCountMap.values());
-			Collections.sort(productCountList, new ProductCountComparator());
-			List<String> productIdList = new ArrayList<String>();
-			for(int i = 0; i < productCountList.size() && i < 20; i ++) {
-				ProductCount pc = productCountList.get(i);
-				productIdList.add(pc.getProductId());
-			}
+			List<String> productIdList = new ArrayList<String>(productCountMap.keySet());
 			List<ProductDto> productList = productService.batchGetProducts(productIdList);
 			if (productList == null) {
 				return null;
@@ -156,10 +147,12 @@ public class UserService {
 			for (ProductDto productDto : productList) {
 				ProductRecommendDto productRecommendDto = new ProductRecommendDto();
 				productRecommendDto.setProduct(productDto);
-				productRecommendDto.setHasRecommendValue(false);
+				productRecommendDto.setHasRecommendValue(true);
+				productRecommendDto.setRecommendValue(new BigDecimal(productCountMap.get(productDto.getId())));
 				resultList.add(productRecommendDto);
 			}
-			return resultList.size() > 0 ? resultList : null;
+			Collections.sort(resultList, new ProductRecommendComparator());
+			return resultList;
 		}catch(Exception ex) {
 			logger.error("Exception in UserService.getUserRecommendProductsFromLogs, ex: ", ex);
 			return null;

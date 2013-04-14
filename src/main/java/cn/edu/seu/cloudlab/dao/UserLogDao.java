@@ -18,6 +18,6 @@ public interface UserLogDao {
 	public void insertUserLog(@Param("userId") String userId, 
 			                  @Param("productId") String productId);
 	
-	@Select("SELECT product_id FROM user_logs WHERE user_id = #{userId} ORDER BY add_time DESC LIMIT 20")
+	@Select("SELECT product_id FROM user_logs WHERE user_id = #{userId} ORDER BY add_time DESC LIMIT 50")
 	public List<String> getRecentProductIds(@Param("userId") String userId);
 }
