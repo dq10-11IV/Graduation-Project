@@ -5,6 +5,7 @@ package cn.edu.seu.cloudlab.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import cn.edu.seu.cloudlab.dao.ProductDao;
 import cn.edu.seu.cloudlab.dto.ProductDto;
 import cn.edu.seu.cloudlab.dto.ProductRecommendDto;
 import cn.edu.seu.cloudlab.entity.ProductEntity;
+import cn.edu.seu.cloudlab.util.ProductRecommendComparator;
 
 /**
  * @author iHome
@@ -113,9 +115,11 @@ public class ProductService {
 						productRecommendDto.setProduct(product);
 						productRecommendDto.setRecommendValue(new BigDecimal(recommendValue));
 						productRecommendDto.setHasRecommendValue(true);
+						productRecommendDto.setShouldShowRecommendValue(true);
 						resultList.add(productRecommendDto);
 					}
 				}
+				Collections.sort(resultList, new ProductRecommendComparator());
 				return resultList;
 			}
 		} catch(Exception ex) {

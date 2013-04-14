@@ -13,7 +13,7 @@
                  			<div class="caption">
                    		 		<h5>
                    		 			<a href="/product?productId=${item.product.id}">${item.product.id}</a>
-                   		 			<#if item.hasRecommendValue>
+                   		 			<#if item.shouldShowRecommendValue>
                    		 			<span class="badge badge-info pull-right">${item.recommendValue?string("0.#")}</span>
                    		 			</#if>
                    		 		</h5>

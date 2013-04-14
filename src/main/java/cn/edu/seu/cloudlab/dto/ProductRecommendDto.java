@@ -19,7 +19,8 @@ public class ProductRecommendDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private ProductDto product;
-	private boolean hasRecommendValue;
+	private boolean hasRecommendValue = false;
+	private boolean shouldShowRecommendValue = false;
 	private BigDecimal recommendValue;
 	
 	/**
@@ -58,5 +59,17 @@ public class ProductRecommendDto implements Serializable {
 	 */
 	public void setRecommendValue(BigDecimal recommendValue) {
 		this.recommendValue = recommendValue;
+	}
+	/**
+	 * @return the shouldShowRecommendValue
+	 */
+	public boolean getShouldShowRecommendValue() {
+		return shouldShowRecommendValue;
+	}
+	/**
+	 * @param shouldShowRecommendValue the shouldShowRecommendValue to set
+	 */
+	public void setShouldShowRecommendValue(boolean shouldShowRecommendValue) {
+		this.shouldShowRecommendValue = shouldShowRecommendValue;
 	}
 }
