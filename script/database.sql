@@ -9,7 +9,7 @@ USE seucloud;
 -- 创建商品表
 CREATE TABLE users
 (
-	id int NOT NULL COMMENT '主键',
+	id varchar(20) NOT NULL COMMENT '主键',
 	username varchar(20) NOT NULL COMMENT '用户名',
 	password varchar(20) NOT NULL COMMENT '密码',
 	PRIMARY KEY (id),
@@ -20,7 +20,7 @@ CREATE TABLE users
 -- 创建用户表
 CREATE TABLE products
 (
-	id int NOT NULL COMMENT '主键',
+	id varchar(20) NOT NULL COMMENT '主键',
 	product_name varchar(200) NOT NULL COMMENT '商品名称',
 	product_index1 varchar(50) NOT NULL COMMENT '商品目录1',
 	product_index2 varchar(50) NOT NULL COMMENT '商品目录2',
@@ -33,7 +33,7 @@ CREATE TABLE products
 -- 创建商品推荐表
 CREATE TABLE product_recommends
 (
-	 product_id int NOT NULL COMMENT '商品id',
+	 product_id varchar(20) NOT NULL COMMENT '商品id',
 	 recommends varchar(1000) COMMENT '推荐商品id列表',
 	 PRIMARY KEY (product_id)
 ) COMMENT '商品推荐表';
@@ -41,7 +41,7 @@ CREATE TABLE product_recommends
 -- 创建相似用户表
 CREATE TABLE user_similar_users
 (
-	user_id int NOT NULL COMMENT '用户id',
+	user_id varchar(20) NOT NULL COMMENT '用户id',
 	similar_users varchar(1000) COMMENT '相似用户id列表',
 	PRIMARY KEY (user_id)
 ) COMMENT '相似用户表';
@@ -49,7 +49,7 @@ CREATE TABLE user_similar_users
 -- 创建用户推荐表
 CREATE TABLE user_recommends 
 (
-	user_id int NOT NULL COMMENT '用户id',
+	user_id varchar(20) NOT NULL COMMENT '用户id',
 	recommends varchar(1000) COMMENT '推荐商品id列表',
 	PRIMARY KEY (user_id)
 ) COMMENT '用户推荐表';
@@ -58,8 +58,8 @@ CREATE TABLE user_recommends
 CREATE TABLE user_logs
 (
 	id int NOT NULL auto_increment COMMENT '主键',
-	user_id int NOT NULL COMMENT '用户id',
-	product_id int NOT NULL COMMENT '访问的商品id',
+	user_id varchar(20) NOT NULL COMMENT '用户id',
+	product_id varchar(20) NOT NULL COMMENT '访问的商品id',
 	add_time datetime NOT NULL COMMENT '访问时间',
 	PRIMARY KEY (id),
 	INDEX IX_user_id (user_id),
@@ -69,7 +69,7 @@ CREATE TABLE user_logs
 -- 创建商品热门度表
 CREATE TABLE product_hots
 (
-	product_id int NOT NULL COMMENT '商品id',
+	product_id varchar(20) NOT NULL COMMENT '商品id',
 	hot_degree int NOT NULL COMMENT '热度',
 	PRIMARY KEY (product_id)
 ) COMMENT '商品热度表';
