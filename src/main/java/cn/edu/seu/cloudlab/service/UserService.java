@@ -22,7 +22,6 @@ import cn.edu.seu.cloudlab.dto.ProductDto;
 import cn.edu.seu.cloudlab.dto.ProductRecommendDto;
 import cn.edu.seu.cloudlab.dto.UserDto;
 import cn.edu.seu.cloudlab.entity.UserEntity;
-import cn.edu.seu.cloudlab.util.ProductCount;
 import cn.edu.seu.cloudlab.util.ProductRecommendComparator;
 
 /**
