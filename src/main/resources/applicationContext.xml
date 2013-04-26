@@ -62,4 +62,8 @@
 	</bean>
 	<bean id="searchAction" class="cn.edu.seu.cloudlab.action.SearchAction" scope="prototype">
 	</bean>
+	<bean id="shoppingCartAction" class="cn.edu.seu.cloudlab.action.ShoppingCartAction" scope="prototype">
+	</bean>
+	<bean id="shoppingCartAjaxAction" class="cn.edu.seu.cloudlab.action.ajax.ShoppingCartAjaxAction" scope="prototype">
+	</bean> 
 </beans>

@@ -36,6 +36,10 @@
 						<td>Product Index2:</td><td>${currentProduct.productIndex2}</td>
 					</tr>
 				</table>
+				<p>
+					<input type="text" placeholder="1">
+					<a class="btn btn-primary btn-large">Add To Shopping Cart</a>
+				</p>
 			</div>
 			</#if>
 			<#if productRecommends??>
