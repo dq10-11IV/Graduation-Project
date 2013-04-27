@@ -37,8 +37,10 @@
 					</tr>
 				</table>
 				<p>
-					<input type="text" placeholder="1">
-					<a class="btn btn-primary btn-large">Add To Shopping Cart</a>
+					<form class="form-inline">
+						<input type="text" class="span1" placeholder="1" id="pNum">
+						<a class="btn btn-primary" id="addToSC">Add To Shopping Cart</a>
+					</form>
 				</p>
 			</div>
 			</#if>
@@ -46,7 +48,39 @@
 			<h3>These are results from Hadoop:</h3>
 			<@common.carousel productRecommends = productRecommends/>
 			</#if>
-		</div>
+		</div>		
 		<#include "/WEB-INF/freemarker/footer.ftl"/>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("#shoppingCart").popover({
+							placement: 'bottom',
+							title: 'ShoppingCart',
+							content: 'Product ${productId} has been added into the shopping cart!'
+						});
+		});
+		$("#addToSC").click(function(){
+			var productId = ${productId};
+			var productNum = parseInt($("#pNum").val());
+			if(isNaN(productNum) || productNum <= 1) {
+				productNum = 1
+			}
+			$.post("ajax/shoppingcart",
+			{
+				action: "add",
+				productId: productId,
+				productNum: productNum
+			},
+			function(data, status) {
+				if(status == "success" && data.code == "success") {
+					$("#shoppingCart").popover('show');	
+					setTimeout(function() {
+						$("#shoppingCart").popover('hide');	
+					},
+					2000);
+				}
+			},
+			"json");
+		});
+		</script>
 	</body>
 </html>

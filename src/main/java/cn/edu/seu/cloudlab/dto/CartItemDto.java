@@ -18,7 +18,7 @@ public class CartItemDto implements Serializable {
 	
 	private String id;
 	private String productName;
-	private String productNum;
+	private int productNum;
 	
 	/**
 	 * @return the id
@@ -47,13 +47,13 @@ public class CartItemDto implements Serializable {
 	/**
 	 * @return the productNum
 	 */
-	public String getProductNum() {
+	public int getProductNum() {
 		return productNum;
 	}
 	/**
 	 * @param productNum the productNum to set
 	 */
-	public void setProductNum(String productNum) {
+	public void setProductNum(int productNum) {
 		this.productNum = productNum;
 	}
 }

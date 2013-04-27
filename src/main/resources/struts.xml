@@ -40,7 +40,7 @@
 			<result name="success" type="freemarker">/WEB-INF/freemarker/shoppingcart.ftl</result>
 		</action>
 	</package>
-	<package name="ajax" extends="json-default">
+	<package name="ajax" namespace="/ajax" extends="json-default">
 		<action name="shoppingcart" class="shoppingCartAjaxAction">
 			<result name="success" type="json">
 				<param name="ignoreHierarchy">false</param>

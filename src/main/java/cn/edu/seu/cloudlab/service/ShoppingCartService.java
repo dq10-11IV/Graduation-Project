@@ -31,7 +31,7 @@ public class ShoppingCartService {
 	public List<CartItemDto> getShoppingCart(String userId) {
 		try {
 			List<CartItemEntity> cartItemList = shoppingCartDao.getShoppingCart(userId);
-			if (cartItemList == null) {
+			if (cartItemList == null || cartItemList.size() == 0) {
 				return null;
 			}
 			List<CartItemDto> resultList = new ArrayList<CartItemDto>();

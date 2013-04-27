@@ -61,6 +61,13 @@ public class ProductAction extends BaseAction {
 	}
 
 	/**
+	 * @return the productId
+	 */
+	public String getProductId() {
+		return productId;
+	}
+
+	/**
 	 * @return the currentProduct
 	 */
 	public ProductDto getCurrentProduct() {

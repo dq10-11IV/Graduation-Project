@@ -20,7 +20,7 @@ import cn.edu.seu.cloudlab.entity.CartItemEntity;
  */
 public interface ShoppingCartDao {
 	
-	@Select("SELECT p.id, p.product_name, sc.product_num FROM shopping_carts sc JOIN products p ON sc.product_id = p.product_id WHERE user_id = #{userId}}")
+	@Select("SELECT p.id, p.product_name, sc.product_num FROM shopping_carts sc JOIN products p ON sc.product_id = p.id WHERE user_id = #{userId}")
 	@Results(value={
 			@Result(property="productName", column="product_name"),
 			@Result(property="productNum", column="product_num"),

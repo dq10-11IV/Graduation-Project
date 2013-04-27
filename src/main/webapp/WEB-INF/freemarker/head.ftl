@@ -13,7 +13,7 @@
       				<a href="/index">Home</a>
       			</li>
       			<li>
-      				<a href="/shoppingcart">ShoppingCart</a>
+      				<a id="shoppingCart" href="/shoppingcart">ShoppingCart</a>
       			</li>
       			<li>
       				<a href="#myModal" data-toggle="modal">About</a>
