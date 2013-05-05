@@ -36,5 +36,16 @@
 		<action name="search" class="searchAction">
 			<result name="success" type="freemarker">/WEB-INF/freemarker/search.ftl</result>
 		</action>
+		<action name="shoppingcart" class="shoppingCartAction">
+			<result name="success" type="freemarker">/WEB-INF/freemarker/shoppingcart.ftl</result>
+		</action>
+	</package>
+	<package name="ajax" namespace="/ajax" extends="json-default">
+		<action name="shoppingcart" class="shoppingCartAjaxAction">
+			<result name="success" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="root">baseAjaxResult</param>
+			</result>
+		</action>
 	</package>
 </struts>
