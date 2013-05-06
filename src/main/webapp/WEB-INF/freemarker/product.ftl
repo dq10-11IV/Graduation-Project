@@ -10,6 +10,10 @@
         	padding-top: 60px;
         	padding-bottom: 40px;
       	}
+      	#analysisInfo {
+      		width: 900px;
+      		margin: 0 0 0 -450px;
+      	}
     	</style>
 		<link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">	
 	</head>
@@ -59,7 +63,7 @@
 		    <h3 id="myModalLabel">Analysis Info</h3>
 		  </div>
 		  <div class="modal-body">
-		  	<canvas id="chart" width="500" height="400"></canvas>
+		  	<canvas id="chart" width="800" height="400"></canvas>
 		  </div>
 		  <div class="modal-footer">
 		    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -107,7 +111,7 @@
 				],
 				datasets : [
 					{
-						fillColor : "rgba(220,220,220,0.5)",
+						fillColor : "rgba(0,0,255,0.5)",
 						strokeColor : "rgba(220,220,220,1)",
 						pointColor : "rgba(220,220,220,1)",
 						pointStrokeColor : "#fff",
