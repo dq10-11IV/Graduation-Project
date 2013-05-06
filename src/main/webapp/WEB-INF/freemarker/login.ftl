@@ -42,7 +42,7 @@
 		<div class="container">
 			<form class="form-signin" action="login?action=login" method="post">
 				<h2 class="form-signin-heading">Please Sign In</h2>
-				<input name="username" type="text" class="input-block-level" placeholder="Email address">
+				<input name="username" type="text" class="input-block-level" placeholder="Username">
 	        	<input name="password" type="password" class="input-block-level" placeholder="Password">
 	       		<label class="checkbox">
 	          		<input name="rememberMe" type="checkbox" value="true"> Remember me
