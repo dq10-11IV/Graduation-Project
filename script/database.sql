@@ -83,3 +83,25 @@ CREATE TABLE searches
 	PRIMARY KEY (id),
 	INDEX IX_keyword (keyword)
 ) COMMENT '搜索表';
+
+-- 创建购物车表
+CREATE TABLE shopping_carts
+(
+	id int NOT NULL auto_increment COMMENT '主键',
+	user_id varchar(20) NOT NULL COMMENT '用户id',
+	product_id varchar(20) NOT NULL COMMENT '商品id',
+	product_num int NOT NULL COMMENT '商品数量',
+	add_time datetime NOT NULL COMMENT '添加时间',
+	PRIMARY KEY (id),
+	UNIQUE INDEX UX_user_id_product_id (user_id, product_id) 
+) COMMENT '购物车表';
+
+-- 创建询盘规则表
+CREATE TABLE shopping_cart_rules
+(
+	id int NOT NULL auto_increment COMMENT '主键',
+	`key` varchar(1000) NOT NULL COMMENT '键',
+	`value` varchar(1000) NOT NULL COMMENT '值',
+	PRIMARY KEY (id),
+	UNIQUE INDEX UX_key (`key`);
+) COMMENT '询盘规则表';

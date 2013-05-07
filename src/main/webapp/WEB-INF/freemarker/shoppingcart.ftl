@@ -1,3 +1,4 @@
+<#import "/WEB-INF/freemarker/common/carousel.ftl" as common>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -36,6 +37,10 @@
 		</tr>
 		</#list>
 		</table>
+		</#if>
+		<#if productRecommends??>
+			<h3>These are results from Hadoop:</h3>
+			<@common.carousel productRecommends = productRecommends/>
 		</#if>
 		</div>
 		<#include "/WEB-INF/freemarker/footer.ftl"/>
