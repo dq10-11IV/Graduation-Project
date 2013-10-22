@@ -47,7 +47,6 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
 		}
 	}
 
-	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}

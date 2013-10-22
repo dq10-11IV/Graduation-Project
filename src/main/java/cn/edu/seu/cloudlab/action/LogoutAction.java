@@ -64,13 +64,11 @@ public class LogoutAction extends ActionSupport implements ServletRequestAware, 
 	private static final long serialVersionUID = 1L;
 
 
-	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 	}
 
 
-	@Override
 	public void setServletResponse(HttpServletResponse response) {
 		this.response = response;
 	}

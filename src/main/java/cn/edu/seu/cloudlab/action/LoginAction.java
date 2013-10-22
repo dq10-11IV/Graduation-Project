@@ -127,13 +127,11 @@ public class LoginAction extends ActionSupport implements ServletResponseAware, 
 
 
 
-	@Override
 	public void setServletResponse(HttpServletResponse response) {
 		this.response = response;
 	}
 
 
-	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
