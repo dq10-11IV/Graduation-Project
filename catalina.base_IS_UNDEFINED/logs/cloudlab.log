@@ -1,0 +1,678 @@
+2013-10-22 11:06:43,979 ERROR [main] o.a.i.e.BaseExecutor [VendorDatabaseIdProvider.java:51] Could not get a databaseId from dataSource
+org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1549) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1388) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.getConnection(BasicDataSource.java:1044) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseProductName(VendorDatabaseIdProvider.java:76) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseName(VendorDatabaseIdProvider.java:61) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseId(VendorDatabaseIdProvider.java:49) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:445) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:336) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1547) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1485) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:461) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:295) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:223) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:292) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:323) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:107) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1393) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1134) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:461) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:295) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:223) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:292) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:198) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:439) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:624) ~[spring-context-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:461) ~[spring-context-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:389) ~[spring-web-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:294) ~[spring-web-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:112) ~[spring-web-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) ~[na:na]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) ~[na:na]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) ~[na:na]
+	at org.mortbay.jetty.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:298) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerCollection.doStart(HandlerCollection.java:229) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:172) ~[na:na]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerCollection.doStart(HandlerCollection.java:229) ~[na:na]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) ~[na:na]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) ~[na:na]
+	at org.mortbay.jetty.plugin.JettyServer.doStart(JettyServer.java:65) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[na:na]
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.startJetty(AbstractJettyMojo.java:520) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.execute(AbstractJettyMojo.java:365) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.mortbay.jetty.plugin.JettyRunMojo.execute(JettyRunMojo.java:523) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:106) ~[na:na]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:208) ~[na:na]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153) ~[na:na]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145) ~[na:na]
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:84) ~[na:na]
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:59) ~[na:na]
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.singleThreadedBuild(LifecycleStarter.java:183) ~[na:na]
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:161) ~[na:na]
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:318) ~[na:na]
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:153) ~[na:na]
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:555) ~[na:na]
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:214) ~[na:na]
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:158) ~[na:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[na:1.7.0_25]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:290) ~[na:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:230) ~[na:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:414) ~[na:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:357) ~[na:na]
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.7.0_25]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526) ~[na:1.7.0_25]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.24.jar:na]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.7.0_25]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526) ~[na:1.7.0_25]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317) ~[mysql-connector-java-5.1.24.jar:na]
+	at org.apache.commons.dbcp.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:582) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.validateConnectionFactory(BasicDataSource.java:1556) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1545) ~[commons-dbcp-1.4.jar:1.4]
+	... 73 common frames omitted
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_25]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182) ~[na:1.7.0_25]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.7.0_25]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.7.0_25]
+	at java.net.Socket.connect(Socket.java:579) ~[na:1.7.0_25]
+	at java.net.Socket.connect(Socket.java:528) ~[na:1.7.0_25]
+	at java.net.Socket.<init>(Socket.java:425) ~[na:1.7.0_25]
+	at java.net.Socket.<init>(Socket.java:241) ~[na:1.7.0_25]
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305) ~[mysql-connector-java-5.1.24.jar:na]
+	... 89 common frames omitted
+2013-10-22 11:06:44,465 INFO [main] c.o.x.c.p.XmlConfigurationProvider [Slf4jLogger.java:41] Parsing configuration file [struts-default.xml]
+2013-10-22 11:06:44,513 INFO [main] c.o.x.c.p.XmlConfigurationProvider [Slf4jLogger.java:41] Parsing configuration file [struts-plugin.xml]
+2013-10-22 11:06:44,524 INFO [main] c.o.x.c.p.XmlConfigurationProvider [Slf4jLogger.java:41] Parsing configuration file [struts.xml]
+2013-10-22 11:06:44,528 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)
+2013-10-22 11:06:44,528 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.FileManagerFactory)
+2013-10-22 11:06:44,529 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+2013-10-22 11:06:44,529 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.CollectionConverter)
+2013-10-22 11:06:44,529 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.ArrayConverter)
+2013-10-22 11:06:44,530 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.DateConverter)
+2013-10-22 11:06:44,530 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.NumberConverter)
+2013-10-22 11:06:44,530 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.StringConverter)
+2013-10-22 11:06:44,531 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionPropertiesProcessor)
+2013-10-22 11:06:44,531 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionFileProcessor)
+2013-10-22 11:06:44,531 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionAnnotationProcessor)
+2013-10-22 11:06:44,532 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterCreator)
+2013-10-22 11:06:44,532 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterHolder)
+2013-10-22 11:06:44,532 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+2013-10-22 11:06:44,532 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.LocaleProvider)
+2013-10-22 11:06:44,533 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+2013-10-22 11:06:44,533 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+2013-10-22 11:06:44,533 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+2013-10-22 11:06:44,534 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+2013-10-22 11:06:44,534 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+2013-10-22 11:06:44,535 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+2013-10-22 11:06:44,536 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+2013-10-22 11:06:44,536 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+2013-10-22 11:06:44,537 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+2013-10-22 11:06:44,537 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+2013-10-22 11:06:44,537 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+2013-10-22 11:06:44,538 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+2013-10-22 11:06:44,538 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+2013-10-22 11:06:44,538 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+2013-10-22 11:06:44,548 INFO [main] o.a.s.s.StrutsSpringObjectFactory [Slf4jLogger.java:41] Initializing Struts-Spring integration...
+2013-10-22 11:06:44,549 INFO [main] c.o.x.s.SpringObjectFactory [Slf4jLogger.java:41] Setting autowire strategy to name
+2013-10-22 11:06:44,549 INFO [main] o.a.s.s.StrutsSpringObjectFactory [Slf4jLogger.java:41] ... initialized Struts-Spring integration successfully
+2013-10-22 11:08:21,738 ERROR [qtp1681585027-17] c.e.s.c.s.UserService [UserService.java:56] Exception in UserService.login, ex: 
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+### The error may exist in cn/edu/seu/cloudlab/dao/UserDao.java (best guess)
+### The error may involve cn.edu.seu.cloudlab.dao.UserDao.getUserByUsernameAndPWD
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:364) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at com.sun.proxy.$Proxy23.selectOne(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:159) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:63) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:43) ~[mybatis-3.2.1.jar:3.2.1]
+	at com.sun.proxy.$Proxy34.getUserByUsernameAndPWD(Unknown Source) ~[na:na]
+	at cn.edu.seu.cloudlab.service.UserService.login(UserService.java:48) ~[classes/:na]
+	at cn.edu.seu.cloudlab.action.LoginAction.execute(LoginAction.java:65) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[na:1.7.0_25]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(DefaultActionInvocation.java:450) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invokeActionOnly(DefaultActionInvocation.java:289) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:252) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:256) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor.doIntercept(DefaultWorkflowInterceptor.java:176) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.validator.ValidationInterceptor.doIntercept(ValidationInterceptor.java:265) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor.doIntercept(AnnotationValidationInterceptor.java:68) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor.intercept(ConversionErrorInterceptor.java:138) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:249) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:249) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:191) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.MultiselectInterceptor.intercept(MultiselectInterceptor.java:73) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:91) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:252) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:176) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:187) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54) ~[struts2-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:546) ~[struts2-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.dispatcher.ng.ExecuteOperations.executeAction(ExecuteOperations.java:77) ~[struts2-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:91) ~[struts2-core-2.3.12.jar:2.3.12]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1474) ~[na:na]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:499) ~[na:na]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137) ~[na:na]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:557) ~[na:na]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1086) ~[na:na]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:428) ~[na:na]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1020) ~[na:na]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:255) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:154) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116) ~[na:na]
+	at org.eclipse.jetty.server.Server.handle(Server.java:370) ~[na:na]
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:489) ~[na:na]
+	at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:960) ~[na:na]
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:1021) ~[na:na]
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:865) ~[na:na]
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240) ~[na:na]
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82) ~[na:na]
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:668) ~[na:na]
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52) ~[na:na]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608) ~[na:na]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543) ~[na:na]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+### The error may exist in cn/edu/seu/cloudlab/dao/UserDao.java (best guess)
+### The error may involve cn.edu.seu.cloudlab.dao.UserDao.getUserByUsernameAndPWD
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:107) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:98) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:62) ~[mybatis-3.2.1.jar:3.2.1]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[na:1.7.0_25]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:354) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	... 85 common frames omitted
+Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:66) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:271) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:69) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:56) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:259) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:132) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104) ~[mybatis-3.2.1.jar:3.2.1]
+	... 92 common frames omitted
+Caused by: org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1549) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1388) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.getConnection(BasicDataSource.java:1044) ~[commons-dbcp-1.4.jar:1.4]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111) ~[spring-jdbc-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77) ~[spring-jdbc-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	... 102 common frames omitted
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.7.0_25]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526) ~[na:1.7.0_25]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.24.jar:na]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.7.0_25]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526) ~[na:1.7.0_25]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317) ~[mysql-connector-java-5.1.24.jar:na]
+	at org.apache.commons.dbcp.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:582) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.validateConnectionFactory(BasicDataSource.java:1556) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1545) ~[commons-dbcp-1.4.jar:1.4]
+	... 106 common frames omitted
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_25]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182) ~[na:1.7.0_25]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.7.0_25]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.7.0_25]
+	at java.net.Socket.connect(Socket.java:579) ~[na:1.7.0_25]
+	at java.net.Socket.connect(Socket.java:528) ~[na:1.7.0_25]
+	at java.net.Socket.<init>(Socket.java:425) ~[na:1.7.0_25]
+	at java.net.Socket.<init>(Socket.java:241) ~[na:1.7.0_25]
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305) ~[mysql-connector-java-5.1.24.jar:na]
+	... 122 common frames omitted
+2013-10-22 11:08:53,005 ERROR [qtp1681585027-18] c.e.s.c.s.UserService [UserService.java:56] Exception in UserService.login, ex: 
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+### The error may exist in cn/edu/seu/cloudlab/dao/UserDao.java (best guess)
+### The error may involve cn.edu.seu.cloudlab.dao.UserDao.getUserByUsernameAndPWD
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:364) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at com.sun.proxy.$Proxy23.selectOne(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:159) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:63) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:43) ~[mybatis-3.2.1.jar:3.2.1]
+	at com.sun.proxy.$Proxy34.getUserByUsernameAndPWD(Unknown Source) ~[na:na]
+	at cn.edu.seu.cloudlab.service.UserService.login(UserService.java:48) ~[classes/:na]
+	at cn.edu.seu.cloudlab.action.LoginAction.execute(LoginAction.java:65) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[na:1.7.0_25]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(DefaultActionInvocation.java:450) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invokeActionOnly(DefaultActionInvocation.java:289) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:252) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.debugging.DebuggingInterceptor.intercept(DebuggingInterceptor.java:256) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.DefaultWorkflowInterceptor.doIntercept(DefaultWorkflowInterceptor.java:176) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.validator.ValidationInterceptor.doIntercept(ValidationInterceptor.java:265) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor.doIntercept(AnnotationValidationInterceptor.java:68) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor.intercept(ConversionErrorInterceptor.java:138) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:249) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ParametersInterceptor.doIntercept(ParametersInterceptor.java:249) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.StaticParametersInterceptor.intercept(StaticParametersInterceptor.java:191) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.MultiselectInterceptor.intercept(MultiselectInterceptor.java:73) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.CheckboxInterceptor.intercept(CheckboxInterceptor.java:91) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.FileUploadInterceptor.intercept(FileUploadInterceptor.java:252) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ModelDrivenInterceptor.intercept(ModelDrivenInterceptor.java:100) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ScopedModelDrivenInterceptor.intercept(ScopedModelDrivenInterceptor.java:141) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ChainingInterceptor.intercept(ChainingInterceptor.java:145) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.PrepareInterceptor.doIntercept(PrepareInterceptor.java:171) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.MethodFilterInterceptor.intercept(MethodFilterInterceptor.java:98) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.I18nInterceptor.intercept(I18nInterceptor.java:176) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.interceptor.ServletConfigInterceptor.intercept(ServletConfigInterceptor.java:164) ~[struts2-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(AliasInterceptor.java:193) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.intercept(ExceptionMappingInterceptor.java:187) ~[xwork-core-2.3.12.jar:2.3.12]
+	at com.opensymphony.xwork2.DefaultActionInvocation.invoke(DefaultActionInvocation.java:246) ~[xwork-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.impl.StrutsActionProxy.execute(StrutsActionProxy.java:54) ~[struts2-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:546) ~[struts2-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.dispatcher.ng.ExecuteOperations.executeAction(ExecuteOperations.java:77) ~[struts2-core-2.3.12.jar:2.3.12]
+	at org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter.doFilter(StrutsPrepareAndExecuteFilter.java:91) ~[struts2-core-2.3.12.jar:2.3.12]
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1474) ~[na:na]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:499) ~[na:na]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:137) ~[na:na]
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:557) ~[na:na]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:231) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1086) ~[na:na]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:428) ~[na:na]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:193) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1020) ~[na:na]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:135) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:255) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:154) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:116) ~[na:na]
+	at org.eclipse.jetty.server.Server.handle(Server.java:370) ~[na:na]
+	at org.eclipse.jetty.server.AbstractHttpConnection.handleRequest(AbstractHttpConnection.java:489) ~[na:na]
+	at org.eclipse.jetty.server.AbstractHttpConnection.content(AbstractHttpConnection.java:960) ~[na:na]
+	at org.eclipse.jetty.server.AbstractHttpConnection$RequestHandler.content(AbstractHttpConnection.java:1021) ~[na:na]
+	at org.eclipse.jetty.http.HttpParser.parseNext(HttpParser.java:865) ~[na:na]
+	at org.eclipse.jetty.http.HttpParser.parseAvailable(HttpParser.java:240) ~[na:na]
+	at org.eclipse.jetty.server.AsyncHttpConnection.handle(AsyncHttpConnection.java:82) ~[na:na]
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint.handle(SelectChannelEndPoint.java:668) ~[na:na]
+	at org.eclipse.jetty.io.nio.SelectChannelEndPoint$1.run(SelectChannelEndPoint.java:52) ~[na:na]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:608) ~[na:na]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:543) ~[na:na]
+	at java.lang.Thread.run(Thread.java:724) ~[na:1.7.0_25]
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+### The error may exist in cn/edu/seu/cloudlab/dao/UserDao.java (best guess)
+### The error may involve cn.edu.seu.cloudlab.dao.UserDao.getUserByUsernameAndPWD
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:107) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:98) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:62) ~[mybatis-3.2.1.jar:3.2.1]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[na:1.7.0_25]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:354) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	... 85 common frames omitted
+Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:66) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:271) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:69) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:56) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:259) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:132) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:105) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:81) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:104) ~[mybatis-3.2.1.jar:3.2.1]
+	... 92 common frames omitted
+Caused by: org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1549) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1388) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.getConnection(BasicDataSource.java:1044) ~[commons-dbcp-1.4.jar:1.4]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111) ~[spring-jdbc-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77) ~[spring-jdbc-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	... 102 common frames omitted
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.7.0_25]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526) ~[na:1.7.0_25]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.24.jar:na]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.7.0_25]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526) ~[na:1.7.0_25]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317) ~[mysql-connector-java-5.1.24.jar:na]
+	at org.apache.commons.dbcp.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:582) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.validateConnectionFactory(BasicDataSource.java:1556) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1545) ~[commons-dbcp-1.4.jar:1.4]
+	... 106 common frames omitted
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_25]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182) ~[na:1.7.0_25]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.7.0_25]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.7.0_25]
+	at java.net.Socket.connect(Socket.java:579) ~[na:1.7.0_25]
+	at java.net.Socket.connect(Socket.java:528) ~[na:1.7.0_25]
+	at java.net.Socket.<init>(Socket.java:425) ~[na:1.7.0_25]
+	at java.net.Socket.<init>(Socket.java:241) ~[na:1.7.0_25]
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305) ~[mysql-connector-java-5.1.24.jar:na]
+	... 122 common frames omitted
+2013-10-22 11:39:43,344 ERROR [main] o.a.i.e.BaseExecutor [VendorDatabaseIdProvider.java:51] Could not get a databaseId from dataSource
+org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.)
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1549) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1388) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.getConnection(BasicDataSource.java:1044) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseProductName(VendorDatabaseIdProvider.java:76) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseName(VendorDatabaseIdProvider.java:61) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseId(VendorDatabaseIdProvider.java:49) ~[mybatis-3.2.1.jar:3.2.1]
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:445) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:336) ~[mybatis-spring-1.2.0.jar:1.2.0]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1547) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1485) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:461) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:295) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:223) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:292) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:323) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:107) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1393) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1134) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:461) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:295) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:223) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:292) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:198) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:439) ~[spring-beans-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:624) ~[spring-context-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:461) ~[spring-context-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:389) ~[spring-web-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:294) ~[spring-web-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:112) ~[spring-web-3.2.2.RELEASE.jar:3.2.2.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) ~[na:na]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) ~[na:na]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) ~[na:na]
+	at org.mortbay.jetty.plugin.JettyWebAppContext.doStart(JettyWebAppContext.java:298) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerCollection.doStart(HandlerCollection.java:229) ~[na:na]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:172) ~[na:na]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerCollection.doStart(HandlerCollection.java:229) ~[na:na]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[na:na]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) ~[na:na]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) ~[na:na]
+	at org.mortbay.jetty.plugin.JettyServer.doStart(JettyServer.java:65) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[na:na]
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.startJetty(AbstractJettyMojo.java:520) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.execute(AbstractJettyMojo.java:365) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.mortbay.jetty.plugin.JettyRunMojo.execute(JettyRunMojo.java:523) ~[jetty-maven-plugin-8.1.13.v20130916.jar:8.1.13.v20130916]
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:106) ~[na:na]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:208) ~[na:na]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153) ~[na:na]
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145) ~[na:na]
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:84) ~[na:na]
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:59) ~[na:na]
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.singleThreadedBuild(LifecycleStarter.java:183) ~[na:na]
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:161) ~[na:na]
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:318) ~[na:na]
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:153) ~[na:na]
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:555) ~[na:na]
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:214) ~[na:na]
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:158) ~[na:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_25]
+	at java.lang.reflect.Method.invoke(Method.java:606) ~[na:1.7.0_25]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:290) ~[na:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:230) ~[na:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:414) ~[na:na]
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:357) ~[na:na]
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.7.0_25]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526) ~[na:1.7.0_25]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.24.jar:na]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.7.0_25]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) ~[na:1.7.0_25]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.7.0_25]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526) ~[na:1.7.0_25]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317) ~[mysql-connector-java-5.1.24.jar:na]
+	at org.apache.commons.dbcp.DriverConnectionFactory.createConnection(DriverConnectionFactory.java:38) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:582) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.validateConnectionFactory(BasicDataSource.java:1556) ~[commons-dbcp-1.4.jar:1.4]
+	at org.apache.commons.dbcp.BasicDataSource.createPoolableConnectionFactory(BasicDataSource.java:1545) ~[commons-dbcp-1.4.jar:1.4]
+	... 73 common frames omitted
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[na:1.7.0_25]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200) ~[na:1.7.0_25]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182) ~[na:1.7.0_25]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[na:1.7.0_25]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.7.0_25]
+	at java.net.Socket.connect(Socket.java:579) ~[na:1.7.0_25]
+	at java.net.Socket.connect(Socket.java:528) ~[na:1.7.0_25]
+	at java.net.Socket.<init>(Socket.java:425) ~[na:1.7.0_25]
+	at java.net.Socket.<init>(Socket.java:241) ~[na:1.7.0_25]
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259) ~[mysql-connector-java-5.1.24.jar:na]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305) ~[mysql-connector-java-5.1.24.jar:na]
+	... 89 common frames omitted
+2013-10-22 11:39:43,670 INFO [main] c.o.x.c.p.XmlConfigurationProvider [Slf4jLogger.java:41] Parsing configuration file [struts-default.xml]
+2013-10-22 11:39:43,713 INFO [main] c.o.x.c.p.XmlConfigurationProvider [Slf4jLogger.java:41] Parsing configuration file [struts-plugin.xml]
+2013-10-22 11:39:43,723 INFO [main] c.o.x.c.p.XmlConfigurationProvider [Slf4jLogger.java:41] Parsing configuration file [struts.xml]
+2013-10-22 11:39:43,727 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)
+2013-10-22 11:39:43,728 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.FileManagerFactory)
+2013-10-22 11:39:43,728 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+2013-10-22 11:39:43,729 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.CollectionConverter)
+2013-10-22 11:39:43,729 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.ArrayConverter)
+2013-10-22 11:39:43,729 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.DateConverter)
+2013-10-22 11:39:43,730 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.NumberConverter)
+2013-10-22 11:39:43,730 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.StringConverter)
+2013-10-22 11:39:43,730 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionPropertiesProcessor)
+2013-10-22 11:39:43,731 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionFileProcessor)
+2013-10-22 11:39:43,731 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionAnnotationProcessor)
+2013-10-22 11:39:43,731 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterCreator)
+2013-10-22 11:39:43,732 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterHolder)
+2013-10-22 11:39:43,732 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+2013-10-22 11:39:43,732 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.LocaleProvider)
+2013-10-22 11:39:43,733 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+2013-10-22 11:39:43,733 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+2013-10-22 11:39:43,733 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+2013-10-22 11:39:43,734 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+2013-10-22 11:39:43,734 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+2013-10-22 11:39:43,735 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+2013-10-22 11:39:43,736 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+2013-10-22 11:39:43,736 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+2013-10-22 11:39:43,737 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+2013-10-22 11:39:43,737 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+2013-10-22 11:39:43,737 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+2013-10-22 11:39:43,738 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+2013-10-22 11:39:43,738 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+2013-10-22 11:39:43,738 INFO [main] o.a.s.c.BeanSelectionProvider [Slf4jLogger.java:41] Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+2013-10-22 11:39:43,748 INFO [main] o.a.s.s.StrutsSpringObjectFactory [Slf4jLogger.java:41] Initializing Struts-Spring integration...
+2013-10-22 11:39:43,749 INFO [main] c.o.x.s.SpringObjectFactory [Slf4jLogger.java:41] Setting autowire strategy to name
+2013-10-22 11:39:43,749 INFO [main] o.a.s.s.StrutsSpringObjectFactory [Slf4jLogger.java:41] ... initialized Struts-Spring integration successfully
