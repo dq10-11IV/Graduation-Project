@@ -28,7 +28,7 @@ public interface ProductDao {
 	
 	@Select("SELECT recommends FROM product_recommends WHERE product_id = #{productId} LIMIT 1")
 	public String getProductRecommends (@Param("productId") String productId); 
-	
+
 	@Select("SELECT p.id, p.product_name, p.product_index1, p.product_index2 FROM products p JOIN product_hots h ON p.id = product_id WHERE p.product_index1 = #{index1} ORDER BY h.hot_degree DESC LIMIT #{topN}")
 	@Results(value={
 			@Result(property="productName", column="product_name"),

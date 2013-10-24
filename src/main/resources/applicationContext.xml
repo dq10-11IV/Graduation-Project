@@ -17,23 +17,23 @@
           http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd"
  default-autowire="byName">
 	<!-- datasource configuration -->
-<!-- 	<jdbc:embedded-database id="dataSource"> -->
-<!--         <jdbc:script location="classpath:script/database.sql"/> -->
-<!--     </jdbc:embedded-database> -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://192.168.1.8:3306/seucloud"/>
-        <property name="username" value="seulab"/>
-        <property name="password" value="seulab"/>
+	<jdbc:embedded-database id="dataSource">
+        <jdbc:script location="classpath:script/database.sql"/>
+    </jdbc:embedded-database>
+<!-- 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
+<!--         <property name="driverClassName" value="com.mysql.jdbc.Driver"/> -->
+<!--         <property name="url" value="jdbc:mysql://192.168.1.8:3306/seucloud"/> -->
+<!--         <property name="username" value="seulab"/> -->
+<!--         <property name="password" value="seulab"/> -->
         
-<!--         Connection Pooling DBCP   -->
-        <property name="initialSize" value="5" />  
-        <property name="maxActive" value="100" />  
-        <property name="maxIdle" value="30" />  
-        <property name="maxWait" value="1000" />  
-        <property name="poolPreparedStatements" value="true" />  
-        <property name="defaultAutoCommit" value="false" />  
-    </bean>
+<!--         Connection Pooling DBCP   --> 
+<!--         <property name="initialSize" value="5" />   -->
+<!--         <property name="maxActive" value="100" />   -->
+<!--         <property name="maxIdle" value="30" />   -->
+<!--         <property name="maxWait" value="1000" />   -->
+<!--         <property name="poolPreparedStatements" value="true" />   -->
+<!--         <property name="defaultAutoCommit" value="false" />   -->
+<!--     </bean> -->
     
     <!-- mybatis sqlsession factory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
